@@ -1,19 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:id="@+id/main"
+    android:background="@color/white"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:background="@color/cor_principal">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logounir"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="40dp">
+        </ImageView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/actor"
+            android:text="Conheça nossos cursos"
+            android:textSize="23dp">
+
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/actor"
+            android:text="Explore os cursos de gradução da Universidade Federal de Rondônia."
+            android:textSize="16dp"
+            android:textAlignment="center">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/actor"
+            android:text="Campus"
+            android:textSize="18dp">
+        </TextView>
+
+        <Spinner
+            android:background="@drawable/borda_cabecalho"
+            android:layout_marginStart="25dp"
+            android:id="@+id/spinnerCampus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="7dp"
+            android:padding="10dp"
+            android:fontFamily="@font/actor"
+            android:entries="@array/Campus">
+
+        </Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/actor"
+            android:text="Grau"
+            android:textSize="18dp">
+        </TextView>
+
+        <RadioGroup
+            android:layout_marginVertical="7dp"
+            android:layout_marginStart="25dp"
+            android:id="@+id/radioGroupGrau"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:fontFamily="@font/actor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Todos"
+                android:textSize="16dp">
+
+            </RadioButton>
+            <RadioButton
+                android:textSize="16dp"
+                android:fontFamily="@font/actor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bacharelado">
+
+            </RadioButton>
+            <RadioButton
+                android:textSize="16dp"
+                android:fontFamily="@font/actor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Licenciatura">
+
+            </RadioButton>
+
+        </RadioGroup>
+
+        <CheckBox
+            android:layout_marginVertical="7dp"
+            android:fontFamily="@font/actor"
+            android:id="@+id/checkNoturno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Somente Cursos Noturnos">
+
+        </CheckBox>
+
+        <Button
+
+            android:id="@+id/buttonVerCursos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VER CURSOS">
+
+
+        </Button>
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

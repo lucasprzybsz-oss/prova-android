@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Prova1</string>
+    <string-array name="Campus">
+        <item>Porto Velho</item>
+        <item>Ariquemes</item>
+        <item>Cacoal</item>
+        <item>Guajará-Mirin</item>
+        <item>Presidente Médici</item>
+        <item>Rolim de Moura</item>
+        <item>Vilhena</item>
+    </string-array>
+
+
 </resources>
