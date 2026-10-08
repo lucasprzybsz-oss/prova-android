@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
+    android:id="@+id/RecyclerView"
     android:background="@color/white"
     >
 
@@ -89,6 +89,7 @@
         </TextView>
 
         <RadioGroup
+
             android:layout_marginVertical="7dp"
             android:layout_marginStart="25dp"
             android:id="@+id/radioGroupGrau"

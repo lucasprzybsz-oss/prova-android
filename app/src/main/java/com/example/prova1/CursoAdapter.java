@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHolder>{
 
@@ -58,7 +57,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
                 .getContext()).load(curso.getImagem()).into(holder.image_curso);
 
         holder.itemView.setOnClickListener(v->{
-            Intent intent = new Intent(v.getContext(),InfoView.class);
+            Intent intent = new Intent(v.getContext(), InfoViewCursos.class);
         });
 
     }

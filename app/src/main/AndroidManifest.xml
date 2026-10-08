@@ -33,7 +33,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".InfoView"
+            android:name=".InfoViewCursos"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
