@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.RecyclerView), (v, insets) -> {
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -38,38 +40,27 @@ public class MainActivity extends AppCompatActivity {
         checkNoturno = findViewById(R.id.checkNoturno);
         buttonVerCursos = findViewById(R.id.buttonVerCursos);
 
-
-        String campus = spinnerCampus.getSelectedItem().toString();
-
-        int selectedId = radioGroupGrau.getCheckedRadioButtonId();
-        RadioButton radioselecionado = findViewById(selectedId);
-
-        String grau = radioselecionado.getText().toString();
-
-        Boolean ehNoturno = checkNoturno.isSelected();
-
         buttonVerCursos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListView.class);
+                String campus = spinnerCampus.getSelectedItem().toString();
 
+                int selectedId = radioGroupGrau.getCheckedRadioButtonId();
+                if (selectedId == -1) {
+                    Toast.makeText(MainActivity.this, "Por favor, selecione um grau.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                RadioButton radioSelecionado = findViewById(selectedId);
+                String grau = radioSelecionado.getText().toString();
+
+                boolean ehNoturno = checkNoturno.isChecked();
+
+                Intent intent = new Intent(MainActivity.this, ListViewCursos.class);
                 intent.putExtra("campus", campus);
                 intent.putExtra("grau", grau);
                 intent.putExtra("ehNoturno", ehNoturno);
                 startActivity(intent);
-
             }
         });
-
-
-
-
-
-
-
-
-
-
-
     }
 }
