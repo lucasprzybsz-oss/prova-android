@@ -28,6 +28,7 @@ public class ListViewCursos extends AppCompatActivity {
             return insets;
         });
 
+        // Os filtros foram enviados pela MainActivity.
         String campus = getIntent().getStringExtra("campus");
         String grau = getIntent().getStringExtra("grau");
         boolean somenteNoturnos = getIntent().getBooleanExtra("ehNoturno", false);
@@ -36,15 +37,17 @@ public class ListViewCursos extends AppCompatActivity {
 
         RecyclerView recyclerViewCursos = findViewById(R.id.recyclerViewCursos);
         recyclerViewCursos.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewCursos.setHasFixedSize(true);
+
         recyclerViewCursos.setAdapter(new CursoAdapter(cursosFiltrados));
 
         TextView textQuantidade = findViewById(R.id.textQuantidade);
-        textQuantidade.setText(getResources().getQuantityString(
-                R.plurals.quantidade_cursos, cursosFiltrados.size(), cursosFiltrados.size()));
+        int quantidade = cursosFiltrados.size();
+        String mensagem = quantidade == 1 ? "1 curso encontrado" : quantidade + " cursos encontrados";
+        textQuantidade.setText(mensagem);
 
         TextView textSemCursos = findViewById(R.id.textSemCursos);
         boolean semResultados = cursosFiltrados.isEmpty();
+
         textSemCursos.setVisibility(semResultados ? View.VISIBLE : View.GONE);
         recyclerViewCursos.setVisibility(semResultados ? View.GONE : View.VISIBLE);
     }

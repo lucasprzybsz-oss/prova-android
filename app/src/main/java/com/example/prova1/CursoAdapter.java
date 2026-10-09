@@ -57,9 +57,6 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
 
         Glide.with(holder.imageCurso)
                 .load(curso.getImagem())
-                .centerCrop()
-                .placeholder(R.drawable.logounir)
-                .error(R.drawable.logounir)
                 .into(holder.imageCurso);
 
         holder.itemView.setOnClickListener(v -> {

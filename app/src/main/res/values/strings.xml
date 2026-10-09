@@ -13,8 +13,5 @@
     </string-array>
 
 
-    <plurals name="quantidade_cursos">
-        <item quantity="one">%d curso encontrado</item>
-        <item quantity="other">%d cursos encontrados</item>
-    </plurals>
+
 </resources>
