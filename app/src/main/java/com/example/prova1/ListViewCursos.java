@@ -28,7 +28,6 @@ public class ListViewCursos extends AppCompatActivity {
             return insets;
         });
 
-        // Os filtros foram enviados pela MainActivity.
         String campus = getIntent().getStringExtra("campus");
         String grau = getIntent().getStringExtra("grau");
         boolean somenteNoturnos = getIntent().getBooleanExtra("ehNoturno", false);
