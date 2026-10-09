@@ -12,63 +12,71 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHolder>{
+public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHolder> {
 
-    private ArrayList<Curso> listaCurso;
-    public CursoAdapter(ArrayList<Curso> listaCurso){
-        this.listaCurso = listaCurso;
+    private final List<Curso> listaCursos;
+
+    public CursoAdapter(List<Curso> listaCursos) {
+        this.listaCursos = listaCursos;
     }
 
-    public static class CursoViewHolder extends RecyclerView.ViewHolder{
-        ImageView image_curso;
-        TextView txt_curso;
-        TextView txt_grau;
-        TextView txt_local;
+    public static class CursoViewHolder extends RecyclerView.ViewHolder {
+        final ImageView imageCurso;
+        final TextView textCurso;
+        final TextView textGrau;
+        final TextView textLocal;
+        final TextView textTurno;
 
-        public CursoViewHolder(
-                @NonNull View itemView
-        ){
+        public CursoViewHolder(@NonNull View itemView) {
             super(itemView);
-            image_curso = itemView.findViewById(R.id.image_curso);
-            txt_curso = itemView.findViewById(R.id.txt_curso);
-            txt_grau = itemView.findViewById(R.id.txt_grau);
-            txt_local = itemView.findViewById(R.id.txt_local);
+            imageCurso = itemView.findViewById(R.id.image_curso);
+            textCurso = itemView.findViewById(R.id.txt_curso);
+            textGrau = itemView.findViewById(R.id.txt_grau);
+            textLocal = itemView.findViewById(R.id.txt_local);
+            textTurno = itemView.findViewById(R.id.txt_turno);
         }
-
     }
 
     @NonNull
     @Override
-    public CursoViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.curso_layout,parent,false);
+    public CursoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.curso_layout, parent, false);
         return new CursoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CursoViewHolder holder, int position){
-        Curso curso = listaCurso.get(position);
-        holder.txt_curso.setText(curso.getNome());
-        holder.txt_local.setText(curso.getCampus());
-        holder.txt_grau.setText(curso.getGrau());
+    public void onBindViewHolder(@NonNull CursoViewHolder holder, int position) {
+        Curso curso = listaCursos.get(position);
+        holder.textCurso.setText(curso.getNome());
+        holder.textGrau.setText(curso.getGrau());
+        holder.textLocal.setText(curso.getCampus());
+        holder.textTurno.setText(curso.getTurno());
 
-        Glide.with(holder.itemView
-                .getContext()).load(curso.getImagem()).into(holder.image_curso);
+        Glide.with(holder.imageCurso)
+                .load(curso.getImagem())
+                .centerCrop()
+                .placeholder(R.drawable.logounir)
+                .error(R.drawable.logounir)
+                .into(holder.imageCurso);
 
-        holder.itemView.setOnClickListener(v->{
-            Intent intent = new Intent(v.getContext(),InfoView.class);
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), InfoView.class);
+            intent.putExtra("nome", curso.getNome());
+            intent.putExtra("campus", curso.getCampus());
+            intent.putExtra("grau", curso.getGrau());
+            intent.putExtra("turno", curso.getTurno());
+            intent.putExtra("descricao", curso.getDescricao());
+            intent.putExtra("imagem", curso.getImagem());
+            intent.putExtra("site", curso.getSite());
+            v.getContext().startActivity(intent);
         });
-
     }
 
     @Override
-    public int getItemCount(){
-        return listaCurso.size();
+    public int getItemCount() {
+        return listaCursos.size();
     }
-
-
 }
-
-

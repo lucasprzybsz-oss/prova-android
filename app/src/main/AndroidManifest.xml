@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListView"
+            android:name=".ListViewCursos"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 

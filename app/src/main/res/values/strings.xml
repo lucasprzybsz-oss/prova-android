@@ -1,14 +1,20 @@
 <resources>
     <string name="app_name">Prova1</string>
     <string-array name="Campus">
+        <item>Todos os campi</item>
         <item>Porto Velho</item>
         <item>Ariquemes</item>
         <item>Cacoal</item>
-        <item>Guajará-Mirin</item>
+        <item>Guajará-Mirim</item>
+        <item>Ji-Paraná</item>
         <item>Presidente Médici</item>
         <item>Rolim de Moura</item>
         <item>Vilhena</item>
     </string-array>
 
 
+    <plurals name="quantidade_cursos">
+        <item quantity="one">%d curso encontrado</item>
+        <item quantity="other">%d cursos encontrados</item>
+    </plurals>
 </resources>

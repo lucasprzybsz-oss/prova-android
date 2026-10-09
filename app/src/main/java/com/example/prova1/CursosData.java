@@ -4,6 +4,27 @@ import java.util.ArrayList;
 
 public class CursosData {
 
+    /** Retorna apenas os cursos que atendem aos filtros da tela inicial. */
+    public static ArrayList<Curso> filtrarCursos(String campus, String grau, boolean somenteNoturnos) {
+        ArrayList<Curso> resultado = new ArrayList<>();
+
+        for (Curso curso : getCursos()) {
+            boolean campusCompativel = campus == null
+                    || campus.equalsIgnoreCase("Todos os campi")
+                    || curso.getCampus().equalsIgnoreCase(campus);
+            boolean grauCompativel = grau == null
+                    || grau.equalsIgnoreCase("Todos")
+                    || curso.getGrau().equalsIgnoreCase(grau);
+            boolean turnoCompativel = !somenteNoturnos
+                    || curso.getTurno().equalsIgnoreCase("Noturno");
+
+            if (campusCompativel && grauCompativel && turnoCompativel) {
+                resultado.add(curso);
+            }
+        }
+        return resultado;
+    }
+
     public static ArrayList<Curso> getCursos() {
 
         ArrayList<Curso> cursos = new ArrayList<>();
