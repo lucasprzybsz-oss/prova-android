@@ -39,11 +39,6 @@ public class InfoView extends AppCompatActivity {
         String imagem = getIntent().getStringExtra("imagem");
         String site = getIntent().getStringExtra("site");
 
-        if (nome == null) {
-            finish();
-            return;
-        }
-
         ((TextView) findViewById(R.id.tituloCurso)).setText(nome);
         ((TextView) findViewById(R.id.textTipoCurso)).setText(grau);
         ((TextView) findViewById(R.id.textCidade)).setText(campus);
@@ -53,23 +48,12 @@ public class InfoView extends AppCompatActivity {
         ImageView imagemCurso = findViewById(R.id.imagemCurso);
         Glide.with(imagemCurso)
                 .load(imagem)
-                .centerCrop()
-                .placeholder(R.drawable.logounir)
-                .error(R.drawable.logounir)
                 .into(imagemCurso);
 
         Button buttonPaginaCurso = findViewById(R.id.buttonPaginaCurso);
         buttonPaginaCurso.setOnClickListener(v -> {
-            if (site == null || site.trim().isEmpty()) {
-                Toast.makeText(this, "Página não disponível.", Toast.LENGTH_SHORT).show();
-                return;
-            }
             Intent abrirPagina = new Intent(Intent.ACTION_VIEW, Uri.parse(site));
-            try {
-                startActivity(abrirPagina);
-            } catch (ActivityNotFoundException e) {
-                Toast.makeText(this, "Nenhum navegador disponível.", Toast.LENGTH_SHORT).show();
-            }
+            startActivity(abrirPagina);
         });
 
         Button buttonCompartilhar = findViewById(R.id.buttonCompartilhar);
